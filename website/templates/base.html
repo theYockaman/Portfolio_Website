@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!-- Meta Characterisics -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- Title of Page -->
+    <title>{% block title %}Nathan Yockey{% endblock %}</title>
+
+    <!-- Tab Icon -->
+    <link rel="icon" href="{{ url_for('static', filename='Content/Icons/wizardLogo.png') }}">
+
+
+
+    <!-- CSS -->
+    <link href="{{ url_for('static', filename='CSS/reset.css') }}" rel="stylesheet">
+    {% block  css_files %}
+    {% endblock %}
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='JS/functions.js') }}"></script>
+    {% block  js_files %}
+    {% endblock %}
+    
+
+  </head>
+  <body>
+
+    <!-- Sents out Flash Messages as Alerts -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script type="text/javascript">
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            </script>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <!-- Sents out Flash Messages as Alerts -->
+    <nav class="navbar" >
+
+      <!-- Logo & Link to Home Page -->
+      <a class="navbar__logo" href="/"><img src="{{ url_for('static', filename='Content/Icons/wizardLogo.png') }}" alt="Logo"></a>
+
+      <!-- Nav Links -->
+      <div class="navbar__links">
+        <a class="navbar__link" href="/about">About</a>
+        <a class="navbar__link" href="/projects">Projects</a>
+        <a class="navbar__link" href="/contact">Contact</a>
+        <a class="navbar__link" href="/shop">Shop</a>
+      </div>
+
+    </nav>
+
+    <!-- Main -->
+    <main>
+      {% block main%}
+      {% endblock main%}
+    </main>
+    
+  </body>
+</html>

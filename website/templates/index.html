@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{# JS Files #}
+{% block  js_files %}
+<script type=text/javascript src="{{ url_for('static', filename='JS/index.js') }}" ></script>
+{% endblock %}
+
+
+{# CSS Files #}
+{% block css_files%}
+<link href="{{ url_for('static', filename='CSS/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{# Main Block #}
+{% block main %}
+
+
+<!-- Main Media -->
+<div id="mainMedia">
+
+  <!-- Left Button -->
+  <button id="mainMedia__leftButton"><</button>
+
+  <div class="mainMedia__details">
+    <span class="mainMedia__title"></span>
+    <span class="mainMedia__desc"></span>
+  </div>
+
+  <!-- Right Button -->
+  <button id="mainMedia__rightButton">></button>
+
+</div>
+
+
+<!-- Popular Movies -->
+{% with id='popularMovies', title='Popular Movies'  %}
+  {% include '/partials/gallery.html' %}
+{% endwith %}
+
+
+<!-- Popular Shows -->
+{% with id='popularShows', title='Popular Shows'  %}
+  {% include '/partials/gallery.html' %}
+{% endwith %}
+
+
+
+<!-- Popular Youtube Clips -->
+{% with id='popularClips', title='Popular Videos' %}
+  {% include '/partials/gallery.html' %}
+{% endwith %}
+
+
+
+{% endblock main%}
